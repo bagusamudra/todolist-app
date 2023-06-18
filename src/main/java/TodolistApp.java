@@ -2,14 +2,14 @@ public class TodolistApp {
 
     public static String[] model = new String[10];
 
-    public static java.util.Scanner scanner = new java.util.Scanner(System.in);
+    public static final java.util.Scanner scanner = new java.util.Scanner(System.in);
 
     public static void main(String[] args) {
         viewShowTodoList();
     }
 
     /**
-     * Show todo list
+     * Show todoList
      */
     public static void showTodoList() {
         System.out.println("TODOLIST");
@@ -30,14 +30,14 @@ public class TodolistApp {
     }
 
     /**
-     * Add todo to list
+     * Add todoList to list
      * @param todo;
      */
     public static void addTodoList(String todo) {
         // cek if model is full?
         var isFull = true;
-        for (int i = 0; i < model.length; i++) {
-            if (model[i] == null) {
+        for (String s : model) {
+            if (s == null) {
                 // available empty model
                 isFull = false;
                 break;
@@ -49,9 +49,7 @@ public class TodolistApp {
             var temp = model;
             model = new String[model.length * 2];
 
-            for (int i = 0; i < temp.length; i++) {
-                model[i] = temp[i];
-            }
+            System.arraycopy(temp, 0, model, 0, temp.length);
         }
 
         // add to array position which is NULL
@@ -72,7 +70,8 @@ public class TodolistApp {
     }
 
     /**
-     * Delete todo from list
+     * Delete todoList from list
+     * @param number;
      */
     public static boolean removeTodoList(Integer number) {
         if ((number - 1) >= model.length) {
@@ -112,8 +111,7 @@ public class TodolistApp {
 
     public static String input(String info) {
         System.out.print(info + " : ");
-        String data = scanner.nextLine();
-        return data;
+        return scanner.nextLine();
     }
 
     public static void testInput() {
@@ -125,7 +123,7 @@ public class TodolistApp {
     }
 
     /**
-     * Show view todo list
+     * Show view todoList
      */
     public static void viewShowTodoList() {
         while (true) {
@@ -160,7 +158,7 @@ public class TodolistApp {
     }
 
     /**
-     * Show view add todo list
+     * Show view add todoList
      */
     public static void viewAddTodoList() {
         System.out.println("ADD TODOLIST");
@@ -184,7 +182,7 @@ public class TodolistApp {
     }
 
     /**
-     * Show view delete todo list
+     * Show view delete todoList
      */
     public static void viewRemoveTodoList() {
         System.out.println("DELETE TODOLIST");
