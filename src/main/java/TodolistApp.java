@@ -1,3 +1,4 @@
+@Deprecated
 public class TodolistApp {
 
     public static String[] model = new String[10];
